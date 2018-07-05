@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* `EDITOR="nano --wait" bin/rails credentials:edit`
 
-Things you may want to cover:
+* `cp config/database.yml.example config/database.yml`
 
-* Ruby version
+* Fill in with the  appropriate data (db username and password)
 
-* System dependencies
+* `rake db:create`
 
-* Configuration
+* `rake db:migrate`
 
-* Database creation
+* `rails s`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Visit http://localhost:3000
