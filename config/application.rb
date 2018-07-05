@@ -1,7 +1,5 @@
 require_relative 'boot'
 
-# require 'rails/all'
-
 require 'rails'
 
 %w(
