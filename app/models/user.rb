@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
+# users class
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable, :recoverable,
+  INITIAL_CREDITS_AMOUNT = 100 # in dollars
+
   devise :database_authenticatable, :registerable,
-          :rememberable, :trackable, :validatable
+         :rememberable, :trackable, :validatable
+
+  has_many :payments, class_name: 'Transaction', foreign_key: :from_user_id
+  has_many :incomes, class_name: 'Transaction', foreign_key: :to_user_id
 end

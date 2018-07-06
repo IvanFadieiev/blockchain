@@ -1,3 +1,4 @@
+<% cache @users do %>
   <p id="notice"><%= notice %></p>
 
   <h1>Users</h1>
@@ -6,7 +7,6 @@
     <thead>
       <tr>
         <th>Email</th>
-        <th>Credits</th>
         <th>Send credits to user</th>
       </tr>
     </thead>
@@ -15,11 +15,10 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.email %></td>
-          <td><%= '100' %></td>
-          <td><%= 'TODO: input' %></td>
+          <td><%= render_payment_form(user) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-
   <br>
+<% end %>

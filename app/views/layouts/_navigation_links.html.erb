@@ -1,2 +1,6 @@
-<%# add navigation links to this file %>
 <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'navbar-brand') %>
+<% if current_user %>
+  <div class='navbar-brand'>
+    Credits <%= Transaction.credits_amount_for(current_user.id) %>
+  </div>
+<% end %>
