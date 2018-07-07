@@ -15,23 +15,24 @@ class Transaction < ApplicationRecord
   before_save :num_credits_prepare_for_db
 
   def num_credits
-    read_attribute(:num_credits)&.to_f
+    read_attribute(:num_credits)&.to_f.try(:/, 100)
   end
 
   private
 
   def num_credits_prepare_for_db
-    self.num_credits = transform_credits(num_credits)
+    credits = read_attribute(:num_credits)
+    self.num_credits = transform_credits(credits)
   end
 
   def num_credits_bigger_zero
-    return unless num_credits <= 0
-    errors.add(:num_credits, 'Should be bigger than 0')
+    return unless read_attribute(:num_credits).to_f <= 0
+    errors.add(:num_credits, 'should be bigger than 0')
   end
 
   def check_credits_limit
     user_credits = Transaction.credits_amount_for(from_user_id)
-    return if num_credits <= user_credits
-    errors.add(:num_credits, 'You are exceeded your credits amount')
+    return if read_attribute(:num_credits).to_f <= user_credits
+    errors.add(:base, 'You are exceeded your credits amount')
   end
 end

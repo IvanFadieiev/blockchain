@@ -2,7 +2,7 @@
 
 # users class
 class User < ApplicationRecord
-  INITIAL_CREDITS_AMOUNT = 100 # in dollars
+  INITIAL_CREDITS_AMOUNT = 100_00 # in cents
 
   devise :database_authenticatable, :registerable,
          :rememberable, :trackable, :validatable

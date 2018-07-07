@@ -13,3 +13,7 @@
 * `rails s`
 
 * Visit http://localhost:3000
+
+### Api endpoint
+
+`/api/v1/users/current?email='your_email'&password='your_password'`
